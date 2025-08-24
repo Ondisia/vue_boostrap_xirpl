@@ -19,7 +19,7 @@ import { RouterLink, RouterView } from "vue-router";
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <RouterLink class="nav-link" to="/"
               ><i class="bi bi-house-fill"></i> Home</RouterLink
@@ -63,6 +63,8 @@ import { RouterLink, RouterView } from "vue-router";
 }
 .nav-link {
   color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 </style>
 
