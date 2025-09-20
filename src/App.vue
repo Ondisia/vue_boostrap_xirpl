@@ -1,71 +1,29 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+import NavbarKu from "./components/NavbarKu.vue";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <RouterLink class="navbar-brand" to="/">bLackDomon</RouterLink>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/"
-              ><i class="bi bi-house-fill"></i> Home</RouterLink
-            >
-          </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/about"
-              ><i class="bi bi-person-badge-fill"></i> About</RouterLink
-            >
-          </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/contact"
-              ><i class="bi bi-telephone-fill"></i> Contact</RouterLink
-            >
-          </li>
-        </ul>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-light" type="submit">Search</button>
-        </form>
-      </div>
-    </div>
-  </nav>
+  <NavbarKu/>
 
   <RouterView />
+
+    <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p class="mb-0">&copy; 2025 Nama Anda. All rights reserved.</p>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
-.navbar {
-  background-color: #015778;
-}
-.navbar-brand {
-  color: white;
-  font-weight: bold;
-  font-size: 25px;
-}
-.nav-link {
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
+footer {
+  padding: 20px 0;
+  background: #212529;
+  color: #fff;
+  text-align: center;
 }
 </style>
+
 
 <!-- <RouterLink to="/">Home</RouterLink> -->

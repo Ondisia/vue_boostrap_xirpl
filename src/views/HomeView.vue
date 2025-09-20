@@ -15,13 +15,13 @@ import { RouterLink } from "vue-router";
 
 <style scoped>
 img {
-    height: 90.2vh;
+    height: 82vh;
     object-fit: cover;
     object-position: top;
 }
 h5 {
   position: absolute;
-  bottom: 95px;
+  bottom: 48px;
   left: 47%;
   transform: translateX(-50%);
 }

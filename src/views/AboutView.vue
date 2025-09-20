@@ -1,34 +1,57 @@
+<script setup>
+import { ref, onMounted } from "vue"
+
+const about = ref(null)
+
+onMounted(async () => {
+  try {
+    const res = await fetch("http://localhost:8000/crud_php_api.php")
+    const json = await res.json()
+    console.log("API Response:", json) // debug
+    if (json.status === "success" && Array.isArray(json.data) && json.data.length > 0) {
+      about.value = json.data[0]  // ✅ ambil dari field "data"
+    } else {
+      console.warn("Data kosong:", json)
+    }
+  } catch (error) {
+    console.error("Gagal ambil data:", error)
+  }
+})
+</script>
+
+
 <template>
   <!-- About Me Section -->
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img
-            src="/img/foto.jpg"
-            alt="About Me"
-            class="img-fluid rounded shadow"
-          />
-        </div>
-        <div class="col-lg-6">
-          <h2 class="fw-bold mb-3">Tentang Saya</h2>
-          <p class="text-muted">
-            Halo! Saya adalah seorang web developer dengan pengalaman dalam
-            membangun website modern, responsif, dan user-friendly. Saya
-            terbiasa menggunakan framework seperti Django, Laravel, serta
-            menguasai frontend dengan Bootstrap dan React.
-          </p>
-          <p class="text-muted">
-            Fokus saya adalah membuat aplikasi yang tidak hanya berfungsi dengan
-            baik tetapi juga memiliki desain yang bersih dan profesional. Saya
-            juga terus belajar teknologi terbaru untuk selalu update dengan
-            perkembangan industri.
-          </p>
-          <a href="#" class="btn btn-primary mt-3">Download CV</a>
-        </div>
+<section class="py-5" v-if="about">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img
+          :src="`http://localhost:8000/${about.foto}`"
+          alt="About Me"
+          class="img-fluid rounded shadow"
+        />
+      </div>
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-3">Tentang Saya</h2>
+        <p class="text-muted" v-if="about.deskripsi">{{ about.deskripsi }}</p>
+        <a
+          v-if="about.file_resume"
+          :href="`http://localhost:8000/${about.file_resume}`"
+          class="btn btn-primary mt-3"
+          target="_blank"
+        >
+          Download CV
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section v-else class="py-5 text-center">
+  <p>Loading data...</p>
+</section>
+
 
   <!-- Skills Section -->
   <section class="py-5 bg-light">
@@ -56,13 +79,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Nama Anda. All rights reserved.</p>
-    </div>
-  </footer>
 </template>
 
 <style scoped>
@@ -84,12 +100,5 @@ body {
 }
 .social-icons a:hover {
   color: #0d6efd;
-}
-footer {
-  margin-top: 50px;
-  padding: 20px 0;
-  background: #212529;
-  color: #fff;
-  text-align: center;
 }
 </style>

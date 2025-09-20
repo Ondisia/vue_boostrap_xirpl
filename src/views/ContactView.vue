@@ -81,12 +81,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p class="mb-0">&copy; 2025 Nama Anda. All rights reserved.</p>
-    </div>
-  </footer>
 </template>
 
 <style scoped>
@@ -98,12 +92,5 @@ body {
   font-size: 1.5rem;
   margin-right: 10px;
   color: #0d6efd;
-}
-footer {
-  margin-top: 50px;
-  padding: 20px 0;
-  background: #212529;
-  color: #fff;
-  text-align: center;
 }
 </style>
